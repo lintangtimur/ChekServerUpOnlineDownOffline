@@ -1,0 +1,19 @@
+  {
+    "Description" : [
+      "Make with Love @stlintangtimur"
+    ],
+    "server" : [
+      "sintak.unika.ac.id",
+      "unika.ac.id",
+      "google.com",
+      "sgp-1.valve.net"
+    ],
+    "port" :
+      {
+        "telnet" : 21,
+        "ssh" : 22,
+        "http" : 80,
+        "ssl" : 443,
+        "mysql" : 3306
+      }
+  }
