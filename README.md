@@ -1,4 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline/badges/gpa.svg)](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline)
+[![Issue Count](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline/badges/issue_count.svg)](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline)
 # ChekServerUpOnlineDownOffline
+
 check server or domain is online or down
 
 ## USAGE
