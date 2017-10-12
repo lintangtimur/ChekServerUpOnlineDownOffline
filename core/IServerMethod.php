@@ -1,4 +1,6 @@
 <?php
+namespace Stelserve;
+
 /**
  * Server Method Initialize
  */

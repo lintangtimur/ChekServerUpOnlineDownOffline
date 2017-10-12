@@ -1,5 +1,9 @@
 <?php
-require "Interface/I_ServerMethod.php";
+namespace Stelserve;
+
+use Stelserve\IServerMethod;
+use Stelserve\Exception\InvalidJSONException;
+
 /**
  * Server Class
  * @author lintangtimur lintangtimur915@gmail.com
@@ -23,7 +27,7 @@ class Server implements IServerMethod
      * Tampung hasil decode json config
      * @var array
      */
-    private $json_decode_result;
+    private $JSONDecodeResult;
 
     /**
      * GetStatus
@@ -48,14 +52,43 @@ class Server implements IServerMethod
         curl_close();
     }
 
+    /**
+     * Menambah server dalam format file json
+     * @param string $config json file yang berisi config
+     * @return $this
+     */
     public function addServer($config)
     {
-        $string = file_get_contents("conf.json");
+        try {
+            if ($this->isJSON($config)) {
+                $string = file_get_contents($config);
+            } else {
+                throw new InvalidJSONException($config);
+            }
+        } catch (InvalidJSONException $e) {
+            die($e->getMessage());
+        }
         $json_decode = json_decode($string, true);
 
-        $this->json_decode_result = $json_decode;
+        $this->JSONDecodeResult = $json_decode;
 
         return $this;
+    }
+
+    /**
+     * Check if is JSON
+     * @param  string  $string config
+     * @return bool
+     */
+    public function isJSON($string)
+    {
+        $json = file_get_contents($string);
+        $json = json_decode($json);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -64,10 +97,10 @@ class Server implements IServerMethod
      */
     public function parse()
     {
-        foreach ($this->json_decode_result['server'] as $key => $value) {
+        foreach ($this->JSONDecodeResult['server'] as $key => $value) {
             $this->servers[] = $value;
         }
-        foreach ($this->json_decode_result['port'] as $service => $port) {
+        foreach ($this->JSONDecodeResult['port'] as $service => $port) {
             $this->ports[$service] = $port;
         }
     }
@@ -77,7 +110,7 @@ class Server implements IServerMethod
      * @param  string $domain ex:google.com
      * @return bool
      */
-    public function checkOnline($domain)
+    public function isOnline($domain)
     {
         $curlInit = curl_init($domain);
         curl_setopt($curlInit, CURLOPT_CONNECTTIMEOUT, 5);
@@ -96,20 +129,32 @@ class Server implements IServerMethod
         return false;
     }
 
+    /**
+     * Get Server
+     * @return array
+     */
     public function getServer()
     {
         return $this->server;
     }
 
+    /**
+     * Get Ports
+     * @return array
+     */
     public function getPort()
     {
         return $this->port;
     }
 
+    /**
+     * UPDOWN
+     * @return void
+     */
     public function updown()
     {
         foreach ($this->servers as $index => $server) {
-            if ($this->checkOnline($server)) {
+            if ($this->isOnline($server)) {
                 echo "$server : ONLINE"."<br>";
             } else {
                 echo "$server : DOWN "."<br>";

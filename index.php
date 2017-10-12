@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>StelinCHECKSERVER</title>
+    <title>Stelin - CHECKSERVER</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.1.0/octicons.min.css">
@@ -16,9 +16,12 @@
   </head>
   <body>
 <?php
-require "core/Server.php";
+require "vendor/autoload.php";
+use Stelserve\Server;
+
 $srv = new Server();
-$srv->addServer('conf.json')->parse();
+
+$srv->addServer('config.json')->parse();
 $srv->updown();
 
 $srv->checkOpenPort();
