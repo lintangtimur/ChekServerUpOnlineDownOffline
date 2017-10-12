@@ -34,7 +34,7 @@ class Server implements IServerMethod
      * @param  string $url ex:google.com
      * @return bool
      */
-    public function getStatus($url)
+    public function isSucceded($url)
     {
         $timeout = 10;
         $ch = curl_init();
