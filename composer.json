@@ -1,0 +1,21 @@
+{
+    "name": "lintangtimur/webstats",
+    "description": "Check server online or not",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lintang Timur",
+            "email": "lintangtimur@protonmail.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+      "files":[
+        "core/helper/function.php"
+      ],
+      "psr-4":{
+        "Stelserve\\":"core/"
+      }
+    }
+}
