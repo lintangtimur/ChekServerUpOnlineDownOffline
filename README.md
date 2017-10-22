@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline/badges/gpa.svg)](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline)
 [![Issue Count](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline/badges/issue_count.svg)](https://codeclimate.com/github/lintangtimur/ChekServerUpOnlineDownOffline)
+[![Coverage Status](https://coveralls.io/repos/github/lintangtimur/ChekServerUpOnlineDownOffline/badge.svg?branch=master)](https://coveralls.io/github/lintangtimur/ChekServerUpOnlineDownOffline?branch=master)
 # ChekServerUpOnlineDownOffline
 
 check server or domain is online or down
