@@ -17,5 +17,8 @@
       "psr-4":{
         "Stelserve\\":"core/"
       }
+    },
+    "require-dev": {
+        "apigen/apigen": "^4.1"
     }
 }
